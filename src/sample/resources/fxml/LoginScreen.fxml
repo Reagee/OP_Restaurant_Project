@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LoginController">
+   <children>
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/login_screen_background.jpeg" />
+         </image>
+      </ImageView>
+      <Label layoutX="767.0" layoutY="284.0" style="-fx-background-color: rgba(255,255,255,0.7); -fx-font-weight: 800;" text="Zaloguj się" textAlignment="CENTER" textFill="#cf6d00">
+         <font>
+            <Font name="Yu Gothic Light" size="80.0" />
+         </font>
+      </Label>
+      <TextField fx:id="login" alignment="CENTER" layoutX="767.0" layoutY="438.0" prefHeight="51.0" prefWidth="372.0" promptText="NAZWA UŻYTKOWNIKA">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="password" alignment="CENTER" layoutX="767.0" layoutY="528.0" prefHeight="51.0" prefWidth="372.0" promptText="HASŁO">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </PasswordField>
+      <Button fx:id="loginButton" layoutX="894.0" layoutY="632.0" mnemonicParsing="false" onAction="#logIn" prefHeight="45.0" prefWidth="118.0" style="-fx-background-color: orange;" text="Zaloguj" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button fx:id="returnButton" layoutX="1687.0" layoutY="899.0" mnemonicParsing="false" onAction="#backSite" prefHeight="45.0" prefWidth="118.0" style="-fx-background-color: orange;" text="Powrót" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Label fx:id="loginError" alignment="CENTER" contentDisplay="CENTER" layoutX="743.0" layoutY="587.0" prefHeight="28.0" prefWidth="421.0" style="-fx-background-color: rgba(255,255,255,0.1);" textAlignment="CENTER" textFill="#d70303">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="registryButton" alignment="CENTER" contentDisplay="CENTER" layoutX="873.0" layoutY="721.0" mnemonicParsing="false" onAction="#createAccount" style="-fx-background-color: rgba(255,255,255,0.65);" text="Zarejestruj się" textAlignment="CENTER" textFill="#b96115">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</Pane>

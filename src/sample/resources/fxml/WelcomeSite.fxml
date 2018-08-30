@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.WelcomeController">
+   <children>
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/restaurant.jpeg" />
+         </image>
+      </ImageView>
+      <Button fx:id="orderButton" contentDisplay="TOP" layoutX="450.0" layoutY="479.0" mnemonicParsing="false" onAction="#orderOnline" prefWidth="269.0" style="-fx-background-color: transparent;" text="Zamów online" textAlignment="CENTER" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icon-order.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="Bauhaus 93" size="30.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="bookTableButton" contentDisplay="TOP" layoutX="1205.0" layoutY="477.0" mnemonicParsing="false" onAction="#bookTable" prefHeight="261.0" prefWidth="275.0" style="-fx-background-color: transparent;" text="Zarezerwuj stolik" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+         <graphic>
+            <ImageView fitHeight="203.0" fitWidth="203.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/reservation.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Bauhaus 93" size="30.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Label alignment="CENTER" layoutX="583.0" layoutY="165.0" style="-fx-background-color: rgba(255,255,255,0.6);" text="Witaj w EatAndGo" textAlignment="CENTER" textFill="#c6851c">
+         <font>
+            <Font name="Bauhaus 93" size="95.0" />
+         </font>
+      </Label>
+      <Button layoutX="846.0" layoutY="950.0" mnemonicParsing="false" onAction="#exitApp" style="-fx-background-color: rgba(255,255,255,0.75);" text="Zamknij aplikacje" textAlignment="CENTER" textFill="#c6851c">
+         <font>
+            <Font name="Bauhaus 93" size="24.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</Pane>

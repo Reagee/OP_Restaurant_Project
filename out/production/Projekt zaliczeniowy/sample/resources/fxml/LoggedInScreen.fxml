@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #FF9900;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LoggedInController">
+   <children>
+      <ImageView fitHeight="300.0" fitWidth="1920.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/background_loggedIn.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="snackButton" layoutX="299.0" layoutY="246.0" mnemonicParsing="false" onAction="#showSnacks" prefHeight="54.0" prefWidth="300.0" style="-fx-background-color: rgba(0,0,0,0.25);" text="Przekąski" textAlignment="CENTER" textFill="#c6991c">
+         <font>
+            <Font name="Yu Gothic UI Regular" size="25.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="mainButton" layoutX="635.0" layoutY="246.0" mnemonicParsing="false" onAction="#showMainCourses" prefHeight="54.0" prefWidth="300.0" style="-fx-background-color: rgba(0,0,0,0.25);" text="Dania główne" textAlignment="CENTER" textFill="#c6991c">
+         <font>
+            <Font name="Yu Gothic UI Regular" size="25.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="soupButton" layoutX="977.0" layoutY="246.0" mnemonicParsing="false" onAction="#showSoups" prefHeight="54.0" prefWidth="300.0" style="-fx-background-color: rgba(0,0,0,0.25);" text="Zupy" textAlignment="CENTER" textFill="#c6991c">
+         <font>
+            <Font name="Yu Gothic UI Regular" size="25.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="drinksButton" layoutX="1311.0" layoutY="246.0" mnemonicParsing="false" onAction="#showDrinks" prefHeight="54.0" prefWidth="300.0" style="-fx-background-color: rgba(0,0,0,0.25);" text="Napoje" textAlignment="CENTER" textFill="#c6991c">
+         <font>
+            <Font name="Yu Gothic UI Regular" size="25.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="returnButton" layoutX="14.0" layoutY="54.0" mnemonicParsing="false" onAction="#backToSite" prefHeight="54.0" prefWidth="138.0" style="-fx-background-color: rgba(0,0,0,0.25);" text="Powrót" textAlignment="CENTER" textFill="#c6991c">
+         <font>
+            <Font name="Yu Gothic UI Regular" size="25.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ScrollPane fx:id="mainPane" layoutX="31.0" layoutY="342.0" prefHeight="697.0" prefWidth="1514.0" style="-fx-background-color: #FF9900;">
+         <content>
+            <VBox fx:id="vBox" prefHeight="695.0" prefWidth="1512.0" style="-fx-background-color: #ff9900;" />
+         </content>
+      </ScrollPane>
+      <ScrollPane layoutX="1632.0" layoutY="343.0" style="-fx-background-color: #ff9900;">
+         <content>
+            <Pane prefHeight="697.0" prefWidth="265.0" style="-fx-border-style: solid; -fx-background-color: rgba(240,240,240,1);">
+               <children>
+                  <VBox fx:id="orderBox" layoutX="6.0" layoutY="14.0" prefHeight="543.0" prefWidth="253.0" style="-fx-background-color: rgba(240,240,240,1);">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="253.0" style="-fx-padding: 15px 0 0 0; -fx-font-weight: 800; -fx-font-size: 32px; -fx-underline: true;" text="Twój koszyk" textAlignment="CENTER" textFill="#c38c3a">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="25.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets top="25.0" />
+                           </opaqueInsets>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Button fx:id="cleanButton" alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="557.0" mnemonicParsing="false" onAction="#cleanOrder" style="-fx-background-color: orange;" text="Usuń ostatnią pozycję" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Yu Gothic Light" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Button>
+                  <Button fx:id="orderButton" alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="629.0" mnemonicParsing="false" onAction="#makeOrder" prefHeight="54.0" prefWidth="170.0" style="-fx-background-color: orange;" text="Zamów" textAlignment="CENTER" textFill="#fffffff1">
+                     <font>
+                        <Font name="Yu Gothic UI Regular" size="25.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+         </content>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ScrollPane>
+   </children>
+</Pane>
