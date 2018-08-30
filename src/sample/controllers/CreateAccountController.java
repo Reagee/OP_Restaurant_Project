@@ -1,15 +1,10 @@
 package sample.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,8 +12,6 @@ import java.sql.Statement;
 public class CreateAccountController {
     private LoadScreenController loadScreenController;
 
-    @FXML
-    private Button registryButton, returnButton;
     @FXML
     private TextField username,email,address;
     @FXML
@@ -85,17 +78,8 @@ public class CreateAccountController {
 
     @FXML
     private void backSite(){
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/sample/resources/fxml/LoginScreen.fxml"));
-        Pane pane = null;
-        try {
-            pane = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        LoginController loginController = loader.getController();
-        loginController.setLoadScreenController(loadScreenController);
-        loadScreenController.setScreenPane(pane);
+        WelcomeController wc = new WelcomeController();
+        wc.orderOnline();
     }
 
     public void setLoadScreenController(LoadScreenController loadScreenController) {

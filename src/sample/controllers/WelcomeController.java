@@ -13,9 +13,6 @@ public class WelcomeController {
     LoadScreenController loadScreenController;
 
     @FXML
-    private Button orderButton, bookTableButton;
-
-    @FXML
     public void orderOnline(){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/sample/resources/fxml/LoginScreen.fxml"));

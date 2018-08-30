@@ -47,11 +47,6 @@ public class LoadScreenController {
         setScreenPane(pane);
     }
 
-    public void setScreen(StackPane stackPane) {
-        mainStackPane.getChildren().clear();
-        mainStackPane.getChildren().add(stackPane);
-    }
-
     public void setScreenPane(Pane Pane) {
         mainStackPane.getChildren().clear();
         mainStackPane.getChildren().add(Pane);
@@ -96,7 +91,7 @@ public class LoadScreenController {
         try {
             return connection.createStatement();
         } catch (SQLException e) {
-            System.out.println("B��d createStatement! " + e.getMessage() + ": " + e.getErrorCode());
+            System.out.println("Błąd createStatement! " + e.getMessage() + ": " + e.getErrorCode());
             System.exit(3);
         }
         return null;
@@ -134,71 +129,6 @@ public class LoadScreenController {
             System.out.println("Zapytanie nie wykonane! " + e.getMessage() + ": " + e.getErrorCode());
         }
         return -1;
-    }
-
-
-    @SuppressWarnings("unused")
-    private static void printDataFromQuery(ResultSet r) {
-        ResultSetMetaData rsmd;
-        try {
-            rsmd = r.getMetaData();
-            int numcols = rsmd.getColumnCount(); // pobieranie liczby kolumn
-            // wyswietlanie nazw kolumn:
-            for (int i = 1; i <= numcols; i++) {
-                System.out.print("\t" + rsmd.getColumnLabel(i) + "\t|");
-            }
-            System.out
-                    .print("\n____________________________________________________________________________\n");
-
-            // wyswietlanie kolejnych rekordow:
-            while (r.next()) {
-                for (int i = 1; i <= numcols; i++) {
-                    Object obj = r.getObject(i);
-                    if (obj != null)
-                        System.out.print("\t" + obj.toString() + "\t|");
-                    else
-                        System.out.print("\t");
-                }
-                System.out.println();
-            }
-        } catch (SQLException e) {
-            System.out.println("Bl�d odczytu z bazy! " + e.getMessage() + ": " + e.getErrorCode());
-        }
-    }
-
-    public static void sqlGetDataByName(ResultSet r) {
-        System.out.println("Pobieranie danych z wykorzystaniem nazw kolumn");
-        try {
-            ResultSetMetaData rsmd = r.getMetaData();
-            int numcols = rsmd.getColumnCount();
-            // Tytul tabeli z etykietami kolumn zestawow wynikow
-            for (int i = 1; i <= numcols; i++) {
-                System.out.print(rsmd.getColumnLabel(i) + "\t|\t");
-            }
-            System.out
-                    .print("\n____________________________________________________________________________\n");
-            while (r.next()) {
-                int size = r.getMetaData().getColumnCount();
-                for(int i = 1; i <= size; i++){
-                    switch(r.getMetaData().getColumnTypeName(i)){
-                        case "INT":
-                            System.out.print(r.getInt(r.getMetaData().getColumnName(i)) + "\t|\t");
-                            break;
-                        case "DATE":
-                            System.out.print(r.getDate(r.getMetaData().getColumnName(i)) + "\t|\t");
-                            break;
-                        case "VARCHAR":
-                            System.out.print(r.getString(r.getMetaData().getColumnName(i)) + "\t|\t");
-                            break;
-                        default:
-                            System.out.print(r.getMetaData().getColumnTypeName(i));
-                    }
-                }
-                System.out.println();
-            }
-        } catch (SQLException e) {
-            System.out.println("Bl�d odczytu z bazy! " + e.getMessage() + ": " + e.getErrorCode());
-        }
     }
 
 }

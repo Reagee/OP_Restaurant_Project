@@ -3,7 +3,6 @@ package sample.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -19,10 +18,7 @@ public class BookTableController {
     private LoadScreenController loadScreenController;
 
     @FXML
-    private Pane firstTable,secondTable,thirdTable,fourthTable,fifthTable,sixthTable,tableInfo;
-
-    @FXML
-    private Button bookButton, firstTableButton,secondTableButton,thirdTableButton,fourthTableButton,fifthTableButton,sixthTableButton,returnButton;
+    private Pane tableInfo;
 
     @FXML
     private Label chooseTableAlert,tableNumber,placesInTable,bookErrorInfo;

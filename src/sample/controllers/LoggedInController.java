@@ -17,11 +17,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 
-public class LoggedInController {
+public class LoggedInController extends MakeOrder{
     private LoadScreenController loadScreenController;
     private List<Button> buttonList = new ArrayList<>();
-    private Statement st = LoadScreenController.st;
-    private Statement st2 = LoadScreenController.st2;
+    private Statement st = LoadScreenController.st,st2 = LoadScreenController.st2;
 
     private Rectangle[] rectangles;
     private String[] mealArray;
@@ -31,8 +30,9 @@ public class LoggedInController {
 
     private boolean orderFlag = false, bucketFlag = false;
     private static int counter = 0;
+
     @FXML
-    private Button returnButton, snackButton, mainButton, soupButton, drinksButton,orderButton,cleanButton;
+    private Button returnButton, snackButton, mainButton, soupButton, drinksButton,orderButton;
 
     @FXML
     private ScrollPane mainPane;
@@ -276,7 +276,8 @@ public class LoggedInController {
         addToScreen(drink);
     }
 
-    private void addToCart(Button b){
+    @Override
+    public void addToCart(Button b){
         if(orderBox.getChildren().size()==8){
             Label warning = new Label("Maksymalna ilość rzeczy w koszyku wynosi 7");
             warning.setFont(Font.font("Yu Gothic Light", 18));
@@ -303,8 +304,9 @@ public class LoggedInController {
         }
     }
 
+    @Override
     @FXML
-    private void makeOrder(){
+    public void makeOrder(){
         if(orderFlag) {
             cleanOrder();
         }
@@ -395,8 +397,9 @@ public class LoggedInController {
         }
     }
 
+    @Override
     @FXML
-    private void cleanOrder(){
+    public void cleanOrder(){
         if(orderBox.getChildren().size()>1)
             orderBox.getChildren().remove(orderBox.getChildren().size()-1);
     }

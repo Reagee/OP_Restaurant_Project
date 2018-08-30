@@ -2,7 +2,7 @@ package sample.meals;
 
 import java.util.List;
 
-public class MainCourse extends Meal implements EditIngredients{
+public class MainCourse extends Meal implements ListIngredients {
 
     private List<String> ingredients;
 
@@ -15,7 +15,11 @@ public class MainCourse extends Meal implements EditIngredients{
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
+    @Override
+    public String ingredients() {
+        for (String ing : ingredients){
+            return ing;
+        }
+        return null;
     }
 }

@@ -2,7 +2,6 @@ package sample.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -19,15 +18,11 @@ public class LoginController {
     public static String username = "";
 
     @FXML
-    private Pane loginPane;
-    @FXML
     private TextField login;
     @FXML
     private Label loginError;
     @FXML
     private PasswordField password;
-    @FXML
-    private Button loginButton, returnButton,registryButton;
 
     private Statement st = LoadScreenController.st;
 
