@@ -17,30 +17,57 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 
+/**
+ * The Class LoggedInController.
+ *
+ * @author Maksym Gilewski
+ */
+
 public class LoggedInController extends MakeOrder{
+    
+    /** The load screen controller. */
     private LoadScreenController loadScreenController;
+    
+    /** The button list. */
     private List<Button> buttonList = new ArrayList<>();
+    
+    /** The statement for db connection. */
     private Statement st = LoadScreenController.st,st2 = LoadScreenController.st2;
 
+    /** The rectangles array. */
     private Rectangle[] rectangles;
+    
+    /** The meal array. */
     private String[] mealArray;
+    
+    /** The meal buttons array. */
     private Button[] mealButtons;
 
+    /** The order. */
     private HashMap<String,Double> order = new HashMap<>();
 
+    /** The bucket flag. */
     private boolean orderFlag = false, bucketFlag = false;
+    
+    /** The counter. */
     private static int counter = 0;
 
+    /** The order button. */
     @FXML
     private Button returnButton, snackButton, mainButton, soupButton, drinksButton,orderButton;
 
+    /** The main pane. */
     @FXML
     private ScrollPane mainPane;
 
+    /** The order box. */
     @FXML
     private VBox vBox, orderBox;
 
 
+    /**
+     * Initialize.
+     */
     @FXML
     public void initialize(){
         mainPane.setPannable(true);
@@ -55,7 +82,11 @@ public class LoggedInController extends MakeOrder{
         buttonList.add(soupButton);
         buttonList.add(drinksButton);
         buttonList.add(orderButton);
-
+        
+        /* 
+         For each loop with lambda expression for handling buttons 
+         */
+        
         for(Button b:buttonList){
             b.setOnMouseEntered(event -> {
                 if(!b.equals(returnButton)) {
@@ -87,6 +118,18 @@ public class LoggedInController extends MakeOrder{
 
     }
 
+    /**
+     * Gets the menu.
+     *
+     * @param table name in DB
+     * @return dynamic loading menu on screen 
+     * @throws SQLException the SQL exception
+     */
+    
+    /* 
+     Method get number of record from table to have the knowledge how many rectangles it should prepare 
+     */
+    
     public void getMenu(String table) throws SQLException {
         vBox.getChildren().clear();
         String sql = "SELECT count(*) as ile FROM " + table;
@@ -108,6 +151,13 @@ public class LoggedInController extends MakeOrder{
         }
     }
 
+    /**
+     * Adds the to screen.
+     *
+     * @param meals the meals
+     * 
+     * Method adds meals from DB to screen
+     */
     public void addToScreen(Meal[] meals){
 
         for(int i=0;i<mealButtons.length;i++){
@@ -163,11 +213,20 @@ public class LoggedInController extends MakeOrder{
         }
     }
 
+    /**
+     * Back to welcome page.
+     */
     @FXML
     private void backToSite(){
         loadScreenController.loadStartScreen();
     }
 
+    /**
+     * Show snacks.
+     *
+     * @throws ResultSetException the result set exception
+     * @throws SQLException the SQL exception
+     */
     @FXML
     private void showSnacks() throws ResultSetException, SQLException {
         try {
@@ -194,6 +253,12 @@ public class LoggedInController extends MakeOrder{
         addToScreen(meals);
     }
 
+    /**
+     * Show main courses.
+     *
+     * @throws ResultSetException the result set exception
+     * @throws SQLException the SQL exception
+     */
     @FXML
     private void showMainCourses() throws ResultSetException, SQLException {
         try {
@@ -226,6 +291,12 @@ public class LoggedInController extends MakeOrder{
         addToScreen(meals);
     }
 
+    /**
+     * Show soups.
+     *
+     * @throws ResultSetException the result set exception
+     * @throws SQLException the SQL exception
+     */
     @FXML
     private void showSoups() throws ResultSetException, SQLException {
         try {
@@ -251,6 +322,12 @@ public class LoggedInController extends MakeOrder{
         addToScreen(meals);
     }
 
+    /**
+     * Show drinks.
+     *
+     * @throws ResultSetException the result set exception
+     * @throws SQLException the SQL exception
+     */
     @FXML
     private void showDrinks() throws ResultSetException, SQLException {
         try {
@@ -276,6 +353,9 @@ public class LoggedInController extends MakeOrder{
         addToScreen(drink);
     }
 
+    /* 
+     Overriding method from abstract class MakeOrder
+     */
     @Override
     public void addToCart(Button b){
         if(orderBox.getChildren().size()==8){
@@ -304,6 +384,9 @@ public class LoggedInController extends MakeOrder{
         }
     }
 
+    /* 
+    Overriding method from abstract class MakeOrder
+    */
     @Override
     @FXML
     public void makeOrder(){
@@ -387,7 +470,7 @@ public class LoggedInController extends MakeOrder{
                         warning.setAlignment(Pos.CENTER);
                         warning.setTextAlignment(TextAlignment.CENTER);
                         warning.setTextFill(Color.DARKGREEN);
-                        orderBox.getChildren().add(warning); //TUTAJ NADPISUJE OSTATNI, TRZEBA ZMIENIC !!!
+                        orderBox.getChildren().add(warning);
                         orderFlag = true;
                     } catch (SQLException e) {
                         e.printStackTrace();
@@ -397,6 +480,9 @@ public class LoggedInController extends MakeOrder{
         }
     }
 
+    /* 
+    Overriding method from abstract class MakeOrder
+    */
     @Override
     @FXML
     public void cleanOrder(){
@@ -405,6 +491,11 @@ public class LoggedInController extends MakeOrder{
     }
 
 
+    /**
+     * Sets the load screen controller.
+     *
+     * @param loadScreenController the new load screen controller
+     */
     public void setLoadScreenController(LoadScreenController loadScreenController) {
         this.loadScreenController = loadScreenController;
     }

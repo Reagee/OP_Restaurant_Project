@@ -11,26 +11,51 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LoginController.
+ *
+ * @author Maksym Gilewski
+ */
 
 public class LoginController {
 
+    /** The load screen controller. */
     private LoadScreenController loadScreenController;
+    
+    /** The username. */
     public static String username = "";
 
+    /** The login. */
     @FXML
     private TextField login;
+    
+    /** The login error. */
     @FXML
     private Label loginError;
+    
+    /** The password. */
     @FXML
     private PasswordField password;
 
+    /** The statement */
     private Statement st = LoadScreenController.st;
 
+    /**
+     * Initialize method 
+     * Clean screen while loading 
+     */
     @FXML
     public void initialize(){
         loginError.setVisible(false);
     }
 
+    /**
+     * Log in method
+     *
+     * @throws SQLException the SQL exception
+     */
+    
     @FXML
     private void logIn() throws SQLException {
         loginError.setText("");
@@ -62,6 +87,9 @@ public class LoginController {
 
     }
 
+    /**
+     * Creates the account.
+     */
     @FXML
     private void createAccount(){
         FXMLLoader loader = new FXMLLoader();
@@ -77,11 +105,20 @@ public class LoginController {
         loadScreenController.setScreenPane(pane);
     }
 
+    /**
+     * Back to the welcome site.
+     */
     @FXML
     private void backSite(){
         loadScreenController.loadStartScreen();
     }
 
+    /**
+     * Sets the load screen controller.
+     *
+     * @param loadScreenController the new load screen controller
+     */
+    
     public void setLoadScreenController(LoadScreenController loadScreenController) {
         this.loadScreenController = loadScreenController;
     }

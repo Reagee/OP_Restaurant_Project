@@ -9,7 +9,13 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+/**
+ * @author Maksym Gilewski
+ *
+ */
+
 public class Main extends Application {
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -19,6 +25,9 @@ public class Main extends Application {
         try {
             stackPane = loader.load();
             Scene scene = new Scene(stackPane);
+            /* 
+             Setting up window (title, size and style of bars)
+             */
             primaryStage.setMaximized(true);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Restauracja");

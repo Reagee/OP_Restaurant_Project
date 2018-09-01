@@ -9,24 +9,49 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CreateAccountController.
+ *
+ * @author Maksym Gilewski
+ */
+
 public class CreateAccountController {
+    
+    /** The load screen controller. */
     private LoadScreenController loadScreenController;
 
+    /** The address. */
     @FXML
     private TextField username,email,address;
+    
+    /** The password confirm. */
     @FXML
     private PasswordField password,passwordConfirm;
+    
+    /** The registry error. */
     @FXML
     private Label registryError;
 
+    /** The statement for db connection */
     private Statement st = LoadScreenController.st;
+    
+    /** The secon statement for db connection for update queries purposes. */
     private Statement st2 = LoadScreenController.st2;
 
+    /**
+     * Initialize.
+     */
     @FXML
     public void initialize(){
         registryError.setVisible(false);
     }
 
+    /**
+     * New user registration method
+     *
+     * @throws SQLException the SQL exception
+     */
     @FXML
     private void registry() throws SQLException {
         String login = username.getText();
@@ -76,12 +101,20 @@ public class CreateAccountController {
 
     }
 
+    /**
+     * Back to the welcome page.
+     */
     @FXML
     private void backSite(){
         WelcomeController wc = new WelcomeController();
         wc.orderOnline();
     }
 
+    /**
+     * Sets the load screen controller.
+     *
+     * @param loadScreenController the new load screen controller
+     */
     public void setLoadScreenController(LoadScreenController loadScreenController) {
         this.loadScreenController = loadScreenController;
     }

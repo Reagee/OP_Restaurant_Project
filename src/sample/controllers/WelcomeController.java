@@ -8,10 +8,21 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * The Class WelcomeController.
+ *
+ * @author Maksym Gilewski
+ */
+
 public class WelcomeController {
 
+    /** The load screen controller. */
     LoadScreenController loadScreenController;
 
+    /**
+     * Order online.
+     * Method which show login screen if users wants to order the food online
+     */
     @FXML
     public void orderOnline(){
         FXMLLoader loader = new FXMLLoader();
@@ -27,6 +38,10 @@ public class WelcomeController {
         loadScreenController.setScreenPane(pane);
     }
 
+    /**
+     * Book table.
+     * Method which show booking table screen for user, who wants to book place in restaurant
+     */
     @FXML
     private void bookTable(){
         FXMLLoader loader = new FXMLLoader();
@@ -42,6 +57,10 @@ public class WelcomeController {
         loadScreenController.setScreenPane(pane);
     }
 
+    /**
+     * Exit app.
+     * Function which closes DB connection and shut the application down
+     */
     @FXML
     private void exitApp(){
         try {
@@ -55,6 +74,11 @@ public class WelcomeController {
         }
     }
 
+    /**
+     * Sets the load screen controller.
+     *
+     * @param loadScreenController the new load screen controller
+     */
     public void setLoadScreenController(LoadScreenController loadScreenController) {
         this.loadScreenController = loadScreenController;
     }

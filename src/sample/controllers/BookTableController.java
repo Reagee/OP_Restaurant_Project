@@ -14,32 +14,61 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BookTableController.
+ *
+ * @author Maksym Gilewski
+ */
 public class BookTableController {
+	
+	
+    /** The load screen controller. */
     private LoadScreenController loadScreenController;
 
+    /** The table info. */
     @FXML
     private Pane tableInfo;
 
+    /** The book error info. */
     @FXML
     private Label chooseTableAlert,tableNumber,placesInTable,bookErrorInfo;
 
+    /** The number. */
     @FXML
     private TextField name,surname,email,number;
 
+    /** The choose term. */
     @FXML
     private ChoiceBox<Timestamp> chooseTerm;
 
+    /** The statement for db connection */
     private Statement st = LoadScreenController.st;
+    
+    /** The second statement for update queries purposes */
     private Statement st2 = LoadScreenController.st2;
+    
+    /** The term list. */
     private ObservableList termList = FXCollections.observableArrayList();
+    
+    /** The table number variable. */
     private int tableNb = 0;
 
+    /**
+     * Initialize.
+     */
     @FXML
     public void initialize(){
         if(tableInfo.isVisible())
             tableInfo.setVisible(false);
     }
 
+    /**
+     * Find free table terms.
+     *
+     * @param tableNumber the table number
+     * @throws SQLException the SQL exception
+     */
     private void findTerms(int tableNumber) throws SQLException {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String sql = "SELECT * FROM free_terms WHERE date >= '"+timestamp+"' and id="+tableNumber+"";
@@ -54,11 +83,18 @@ public class BookTableController {
             chooseTerm.setItems(termList);
         }
     }
+    
+    /**
+     * Back to the welcome page.
+     */
     @FXML
     private void backSite(){
         loadScreenController.loadStartScreen();
     }
 
+    /**
+     * Book table method.
+     */
     @FXML
     private void bookTable(){
         Timestamp choosedTime = chooseTerm.getValue();
@@ -96,6 +132,14 @@ public class BookTableController {
         }
     }
 
+    
+    /* 
+     All methods for booking the table contain try catch phrase because of findTerms() method which throws SQLException
+     */
+    
+    /**
+     * First table book.
+     */
     @FXML
     private void firstTableBook(){
         chooseTableAlert.setText("");
@@ -110,6 +154,9 @@ public class BookTableController {
         }
     }
 
+    /**
+     * Second table book.
+     */
     @FXML
     private void secondTableBook(){
         chooseTableAlert.setText("");
@@ -124,6 +171,9 @@ public class BookTableController {
         }
     }
 
+    /**
+     * Third table book.
+     */
     @FXML
     private void thirdTableBook(){
         chooseTableAlert.setText("");
@@ -138,6 +188,9 @@ public class BookTableController {
         }
     }
 
+    /**
+     * Fourth table book.
+     */
     @FXML
     private void fourthTableBook(){
         chooseTableAlert.setText("");
@@ -152,6 +205,9 @@ public class BookTableController {
         }
     }
 
+    /**
+     * Fifth table book.
+     */
     @FXML
     private void fifthTableBook(){
         chooseTableAlert.setText("");
@@ -166,6 +222,9 @@ public class BookTableController {
         }
     }
 
+    /**
+     * Sixth table book.
+     */
     @FXML
     private void sixthTableBook(){
         chooseTableAlert.setText("");
@@ -182,6 +241,11 @@ public class BookTableController {
 
 
 
+    /**
+     * Sets the load screen controller.
+     *
+     * @param loadScreenController the new load screen controller
+     */
     public void setLoadScreenController(LoadScreenController loadScreenController) {
         this.loadScreenController = loadScreenController;
     }
