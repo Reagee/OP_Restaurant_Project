@@ -122,7 +122,6 @@ public class LoggedInController extends MakeOrder{
      * Gets the menu.
      *
      * @param table name in DB
-     * @return dynamic loading menu on screen 
      * @throws SQLException the SQL exception
      */
     
