@@ -6,7 +6,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import java.io.IOException;
 import java.sql.*;
-import java.util.Properties;
 
 /**
  * The Class LoadScreenController.
@@ -25,6 +24,9 @@ public class LoadScreenController {
     
     /** The second statement for db connection (add for multi db queries purposes) */
     protected static Statement st2;
+
+    /** The connection for the db */
+    protected static Connection con;
 
     /** The user id. */
     private int user_id;
@@ -45,7 +47,7 @@ public class LoadScreenController {
         else	
             System.exit(1);
         String DB_URL="jdbc:mysql://localhost:3306/restaurant?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        Connection con = DriverManager.getConnection(DB_URL, "root", "");
+        con = DriverManager.getConnection(DB_URL, "root", "");
         st = createStatement(con);
         st2 = createStatement(con);
         if(executeUpdate(st,"USE restaurant;")==0)
@@ -77,27 +79,9 @@ public class LoadScreenController {
      *
      * @param Pane the new screen pane
      */
-    public void setScreenPane(Pane Pane) {
+    protected void setScreenPane(Pane Pane) {
         mainStackPane.getChildren().clear();
         mainStackPane.getChildren().add(Pane);
-    }
-
-    /**
-     * Gets the user id.
-     *
-     * @return the user id
-     */
-    public int getUser_id() {
-        return user_id;
-    }
-
-    /**
-     * Sets the user id.
-     *
-     * @param user_id the new user id
-     */
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
     }
 
     /**
@@ -106,7 +90,7 @@ public class LoadScreenController {
      * @param driver the driver
      * @return true, if successful
      */
-    public static boolean checkDriver(String driver) {
+    private static boolean checkDriver(String driver) {
         try {
             Class.forName(driver).newInstance();
             return true;
@@ -115,33 +99,6 @@ public class LoadScreenController {
             return false;
         }
     }
-
-    /**
-     * Gets the connection.
-     *
-     * @param kindOfDatabase the kind of database
-     * @param adres the adres
-     * @param port the port
-     * @param userName the user name
-     * @param password the password
-     * @return the connection
-     */
-    public static Connection getConnection(String kindOfDatabase, String adres, int port, String userName, String password) {
-
-        Connection conn = null;
-        Properties connectionProps = new Properties();
-        connectionProps.put("user", userName);
-        connectionProps.put("password", password);
-        try {
-            conn = DriverManager.getConnection(kindOfDatabase + adres + ":" + port + "/",
-                    connectionProps);
-        } catch (SQLException e) {
-            System.out.println("Błąd połączenia z bazą danych! " + e.getMessage() + ": " + e.getErrorCode());
-            System.exit(2);
-        }
-        return conn;
-    }
-
 
     /**
      * Creates the statement.
@@ -158,28 +115,6 @@ public class LoadScreenController {
         }
         return null;
     }
-
-
-    /**
-     * Close connection.
-     *
-     * @param connection the connection
-     * @param s the s
-     */
-    @SuppressWarnings("unused")
-    private static void closeConnection(Connection connection, Statement s) {
-        System.out.print("\nZamykanie polaczenia z bazą:");
-        try {
-            s.close();
-            connection.close();
-        } catch (SQLException e) {
-            System.out
-                    .println("Błąd przy zamykaniu polłczenia z bazą! " + e.getMessage() + ": " + e.getErrorCode());;
-            System.exit(4);
-        }
-        System.out.print(" zamknięcie OK");
-    }
-
 
     /**
      * Execute query.

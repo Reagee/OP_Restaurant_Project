@@ -66,6 +66,7 @@ public class WelcomeController {
         try {
             LoadScreenController.st.close();
             LoadScreenController.st2.close();
+            LoadScreenController.con.close();
             System.out.println("Aplikacja została wyłączona poprawnie");
         } catch (SQLException e) {
             e.printStackTrace();

@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class LoginController.
  *

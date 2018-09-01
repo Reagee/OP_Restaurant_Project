@@ -9,7 +9,7 @@ package sample.meals;
 /**
  * The Class Drinks.
  */
-public class Drinks extends Meal {
+public class Drinks extends Meal { //inheriting from Meal
 
     /**
      * Instantiates a new drinks.

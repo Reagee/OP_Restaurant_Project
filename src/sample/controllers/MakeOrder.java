@@ -8,12 +8,12 @@ import javafx.scene.control.Button;
  * @author Maksym Gilewski
  */
 
-public abstract class MakeOrder {
+public abstract class MakeOrder { //abstract class
     
     /**
      * Adds the to cart.
      *
-     * @param Button b 
+     * @param b
      * Function get Button as a parameter to have the knowledge of which button has been pressed
      */
     public void addToCart(Button b) {};

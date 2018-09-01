@@ -74,11 +74,11 @@ public class CreateAccountController {
         }else if(!mail.contains("@")){
             registryError.setVisible(true);
             registryError.setText("Podaj poprawny adres email");
-        }else if(resultUser.next()){
+        }else if(resultUser != null && resultUser.next()){ //short nested if
             registryError.setVisible(true);
             registryError.setText("Podana nazwa użytkownika jest już zajęta");
         }
-        else if(resultMail.next()){
+        else if(resultMail != null && resultMail.next()){
             registryError.setVisible(true);
             registryError.setText("Istnieje już konto o takim adresie e-mail");
         }else{

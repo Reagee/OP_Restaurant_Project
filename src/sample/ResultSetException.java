@@ -3,11 +3,10 @@
  */
 package sample;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ResultSetException.
  */
-public class ResultSetException extends Exception {
+public class ResultSetException extends Exception { //own created exception for handling resultset's errors while operating on db
 
     /**
      * Instantiates a new result set exception.

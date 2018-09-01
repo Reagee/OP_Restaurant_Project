@@ -8,13 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class BookTableController.
  *
@@ -49,7 +47,7 @@ public class BookTableController {
     private Statement st2 = LoadScreenController.st2;
     
     /** The term list. */
-    private ObservableList termList = FXCollections.observableArrayList();
+    private ObservableList termList = FXCollections.observableArrayList(); //observableArrayList()
     
     /** The table number variable. */
     private int tableNb = 0;

@@ -8,7 +8,7 @@ package sample.meals;
 /**
  * The Class Meal.
  */
-public class Meal {
+public class Meal { //base class for Drinks,Snack,Soup and MainCourse
     
     /** The name. */
     private String name;

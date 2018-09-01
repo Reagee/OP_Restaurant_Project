@@ -29,7 +29,7 @@ public class LoggedInController extends MakeOrder{
     private LoadScreenController loadScreenController;
     
     /** The button list. */
-    private List<Button> buttonList = new ArrayList<>();
+    private List<Button> buttonList = new ArrayList<>(); //ArrayList for buttons
     
     /** The statement for db connection. */
     private Statement st = LoadScreenController.st,st2 = LoadScreenController.st2;
@@ -44,7 +44,7 @@ public class LoggedInController extends MakeOrder{
     private Button[] mealButtons;
 
     /** The order. */
-    private HashMap<String,Double> order = new HashMap<>();
+    private HashMap<String,Double> order = new HashMap<>(); //using hashmap for the orded
 
     /** The bucket flag. */
     private boolean orderFlag = false, bucketFlag = false;

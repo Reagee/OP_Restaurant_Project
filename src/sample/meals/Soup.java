@@ -8,7 +8,7 @@ package sample.meals;
 /**
  * The Class Soup.
  */
-public class Soup extends Meal {
+public class Soup extends Meal { //inheriting from Meal
     
     /**
      * Instantiates a new soup.
