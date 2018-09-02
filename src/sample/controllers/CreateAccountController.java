@@ -106,8 +106,7 @@ public class CreateAccountController {
      */
     @FXML
     private void backSite(){
-        WelcomeController wc = new WelcomeController();
-        wc.orderOnline();
+    	loadScreenController.loadStartScreen();
     }
 
     /**

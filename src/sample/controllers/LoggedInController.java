@@ -122,7 +122,6 @@ public class LoggedInController extends MakeOrder{
      * Gets the menu.
      *
      * @param table name in DB
-     * @return dynamic loading menu on screen 
      * @throws SQLException the SQL exception
      */
     
@@ -368,6 +367,9 @@ public class LoggedInController extends MakeOrder{
             orderBox.getChildren().add(warning);
         }
         if(orderBox.getChildren().size()<8) {
+        	if(orderFlag) {
+        		orderBox.getChildren().remove(orderBox.getChildren().size()-1);
+        	}
             if(bucketFlag)
                 cleanOrder();
             if (b != null) {
