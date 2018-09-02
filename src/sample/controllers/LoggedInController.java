@@ -355,6 +355,7 @@ public class LoggedInController extends MakeOrder{
     /* 
      Overriding method from abstract class MakeOrder
      */
+    
     @Override
     public void addToCart(Button b){
         if(orderBox.getChildren().size()==8){
