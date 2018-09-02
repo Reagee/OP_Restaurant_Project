@@ -46,7 +46,7 @@ public class LoadScreenController {
             System.out.println("mysqlDriver ok !");
         else	
             System.exit(1);
-        String DB_URL="jdbc:mysql://localhost:3306/restaurant?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String DB_URL="jdbc:mysql://localhost:3306/restaurant?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         con = DriverManager.getConnection(DB_URL, "root", "");
         st = createStatement(con);
         st2 = createStatement(con);

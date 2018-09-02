@@ -48,7 +48,7 @@ public class BookTableController {
     private Statement st2 = LoadScreenController.st2;
     
     /** The term list. */
-    private ObservableList termList = FXCollections.observableArrayList(); //observableArrayList()
+    private ObservableList<Timestamp> termList = FXCollections.observableArrayList(); //observableArrayList()
     
     /** The table number variable. */
     private int tableNb = 0;
@@ -69,15 +69,17 @@ public class BookTableController {
      * @throws SQLException the SQL exception
      */
     private void findTerms(int tableNumber) throws SQLException {
+    	termList.removeAll(termList);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String sql = "SELECT * FROM free_terms WHERE date >= '"+timestamp+"' and id="+tableNumber+"";
         ResultSet res = LoadScreenController.executeQuery(st,sql);
         if(!res.isBeforeFirst()){
             chooseTableAlert.setText("Brak miejsc.");
         }else {
-            termList.removeAll(termList);
             while(res.next()){
-                termList.addAll(res.getTimestamp("date"));
+            	Timestamp tp = res.getTimestamp("date");
+            	tp.setHours(tp.getHours()-2);
+            	termList.addAll(tp);
             }
             chooseTerm.setItems(termList);
         }
@@ -101,6 +103,7 @@ public class BookTableController {
         String sname = surname.getText();
         String mail = email.getText();
         String phone = number.getText();
+        bookErrorInfo.setText("");
 
         if(fname==null || fname.isEmpty() || sname==null ||sname.isEmpty()||mail==null||mail.isEmpty()||phone==null||phone.isEmpty()){
             bookErrorInfo.setText("Wypełnij poprawnie wszystkie pola");
@@ -115,6 +118,7 @@ public class BookTableController {
                     "VALUES (NULL, '"+tableNb+"', '"+choosedTime+"', '"+fname+"', '"+sname+"', '"+mail+"', '"+Long.parseLong(phone)+"')";
             if(LoadScreenController.executeUpdate(st,book)==1){
                 String remove = "DELETE FROM free_terms WHERE id="+tableNb+" and date='"+choosedTime+"'";
+                System.out.println(remove);
                 if(LoadScreenController.executeUpdate(st2,remove) == 1) {
                     tableInfo.setVisible(false);
                     name.setText("");
@@ -124,6 +128,9 @@ public class BookTableController {
                     bookErrorInfo.setText("Stolik nr." + tableNb + " został zarezerwowany na termin:" + choosedTime);
                     bookErrorInfo.setTextFill(Color.BLACK);
                     tableNb = 0;
+                }
+                else{
+                    bookErrorInfo.setText("Błąd podczas rezerwacji stolika");
                 }
             }else{
                 bookErrorInfo.setText("Błąd podczas rezerwacji stolika");
